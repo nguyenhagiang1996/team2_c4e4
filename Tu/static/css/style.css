@@ -1860,6 +1860,10 @@ li.bt-nn {
   height: 60px;
   padding: 0.5em 0;
 }
+
+.dropdown-menu1 {
+    min-width: 105px;
+}
 .pick {
   padding: 0em 0.6em;
 }
