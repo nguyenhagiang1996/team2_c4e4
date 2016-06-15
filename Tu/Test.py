@@ -17,7 +17,7 @@ def lowcarb():
 @app.route('/orders')
 def orders():
     return render_template("orders.html")
-#--------------------------------------------------
+#--------------------------------------------------BMI
 
 @app.route('/BMI_request<bmr>,<BMI>')
 def BMI_request(bmr,BMI):

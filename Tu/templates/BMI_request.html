@@ -67,6 +67,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="register">
 				 <div class="register-top-grid">
 					<h3>PERSONAL INFORMATION</h3>
+                     <div><h3>Calculate Your Basal Metabolic Rate</h3><div style="color: red">{{ bmr }}</div></div>
+                     <div><h3>BMI</h3><div style="color: red">{{ BMI }}</div></div>
                      <form action="BMI" method="post">
                          <div class="wow fadeInLeft" data-wow-delay="0.4s">
                             <span>WEIGHT(kg)<label>*</label></span>
@@ -95,8 +97,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		   </div>
 		 </div>
 	</div>
-<div><h3>Calculate Your Basal Metabolic Rate</h3>{{ bmr }}</div>
-<div><h3>BMI</h3>{{ BMI }}</div>
+
 <!-- register -->
 <!-- footer-->
 	<div class="footer">
