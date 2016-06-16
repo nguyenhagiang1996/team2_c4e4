@@ -27,7 +27,7 @@ def BMI_request(bmr,BMI):
 def bmi():
     if request.method == 'POST':
         if request.form['gender'] == "Male":
-            bmr = 66.47 + (13.75  * int(request.form['weight'])) + (5.0 * int(request.form['height'])) - (6.75 * int(request.form['age']))
+            bm = 66.47 + (13.75  * int(request.form['weight'])) + (5.0 * int(request.form['height'])) - (6.75 * int(request.form['age']))
             BMI = int(request.form['weight']) / (int(request.form['height']) / 100) ** 2
         elif request.form['gender'] == "Female":
             bmr = 665.09 + (9.56 * int(request.form['weight'])) + (1.84 * int(request.form['height'])) - (4.67 * int(request.form['age']))
