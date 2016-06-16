@@ -1,4 +1,34 @@
 from flask import Flask, render_template,request,redirect,url_for
+#---------------------------------- connect database lowcarb
+import mongoengine
+from mongoengine import Document, StringField
+host = "ds025973.mlab.com"
+port = 25973
+db_name = "data_kcal"
+user_name = "huong"
+password = "123456"
+mongoengine.connect(db_name, host=host, port=port, username=user_name, password=password)
+
+class Carb_recipes(Document):
+    title = StringField()
+    img = StringField()
+    link = StringField()
+    summary = StringField()
+#-------------------------
+#---------------------------------- connect database shop
+import mongoengine
+from mongoengine import Document, StringField
+host = "ds025973.mlab.com"
+port = 25973
+db_name = "data_kcal"
+user_name = "huong"
+password = "123456"
+mongoengine.connect(db_name, host=host, port=port, username=user_name, password=password)
+
+class Shop_das(Document):
+    title = StringField()
+    link = StringField()
+#-------------------------
 app = Flask(__name__,static_url_path='')
 
 
@@ -12,7 +42,11 @@ def index_return():
 # -------------------------------------------------
 @app.route('/lowcarb')
 def lowcarb():
-    return render_template("lowcarb.html")
+    return render_template("lowcarb.html",data = Carb_recipes.objects)
+
+@app.route('/shop')
+def shop():
+    return render_template("shop.html",data_shop = Shop_das.objects)
 
 @app.route('/orders')
 def orders():

@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Spicemystery a Hotel and Resturant Category Flat Bootstarp Responsive Website Template | Login :: w3layouts</title>
+<title>Spicemystery a Hotel and Resturant Category Flat Bootstarp Responsive Website Template | Resturant :: w3layouts</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,7 +23,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 <body>
 <!-- header -->
-<div class="header">
+	<div class="header">
 
 		<div class="container">
 			<div class="logo">
@@ -33,8 +33,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="head-nav">
 					<span class="menu"> </span>
 						<ul>
-							<li class="active"><a href="/index">CALORIE</a></li>
-							<li><a href="/resturants">LOW CARB</a></li>
+                            <li class="active" ><a href="/index">CALORIE</a></li>
+							<li><a href="/lowcarb">LOW CARB</a></li>
 							<li><a href="/BMI">BMI</a></li>
 							<li><a href="/About%20Us">ABOUT US</a></li>
                             <li><a href="/login">LOGIN</a></li>
@@ -59,51 +59,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 					<div class="clearfix"> </div>
 			</div>
-	</div>
-<!-- header -->
-<!-- register -->
-	<div class="main-1">
-		<div class="container">
-			<div class="register">
-				 <div class="register-top-grid">
-					<h3>PERSONAL INFORMATION</h3>
-                     <div><h3>BMR</h3><div style="color: red">{{ bmr }}</div></div>
-                     <div><h3>BMI</h3><div style="color: red">{{ BMI }}</div></div>
-                     <form action="BMI" method="post">
-                         <div class="wow fadeInLeft" data-wow-delay="0.4s">
-                            <span>WEIGHT(kg)<label>*</label></span>
-                            <input type="text" name="weight">
-                         </div>
-                         <div class="wow fadeInRight" data-wow-delay="0.4s">
-                            <span>HEIGHT(cm)<label>*</label></span>
-                            <input type="text" name="height">
-                         </div>
-                         <div class="wow fadeInRight" data-wow-delay="0.4s">
-                             <span>AGE<label>*</label></span>
-                             <input type="text" name="age">
-                         </div>
-                         <div class="wow fadeInRight" data-wow-delay="0.4s">
-                             <span>GENDER<label>*</label></span>
-                             <select name="gender" id="country" onchange="change_country(this.value)" class="wow fadeInRight" type="text" style="color: black">
-                                                <option >Male</option>
-                                                <option>Female</option>
-                             </select>
-                         </div>
-                         <button type="submit" class="acount-btn" >BMR</button>
-				   </form>
-				</div>
-                  <div class="clearfix"> </div>
-                  <div class="clearfix"> </div>
-		   </div>
-		 </div>
-	</div>
-
-<!-- register -->
+	</div>-->
+<!-- about -->
+<div class="orders">
+	<div class="container">
+        {% for foo in data_shop %}
+		<div class="order-top">
+			<li class="im-g"><a href="{{ foo.link }}"><img src="{{ foo.image }}" class="img-responsive" alt=""></a></li>
+			<li class="data"><a href="{{ foo.link }}" ><h4>{{ foo.title }}</h4></a>
+			</li>
+			<li class="bt-nn">
+				<a class="morebtn hvr-rectangle-in" href="{{ foo.link }}">View</a>
+			</li>
+			<div class="clearfix"></div>
+		</div>
+        {% endfor %}
+<!-- about -->
 <!-- footer-->
 	<div class="footer">
 		<div class="container">
 			<div class="footer-left">
-				<p>Copyrights © 2015 SpiceMystery All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+				<p>Copyrights © 2016 | Design by <a href="https://www.facebook.com/groups/509764159226579/?fref=ts">Team 2 - C4E4</a></p>
 			</div>
 			<div class="footer-right">
 				<ul>
