@@ -43,17 +43,22 @@ kcal_collection = db['kcal']
 
 @app.route('/')
 def index():
-    # n = str(input("Enter your food: ")).upper()
-    # def collect_choice(x):
-    #     data_find = kcal_collection.find({'NAME': x})
-    #     for i in data_find:
-    #         print(i['SHORT_DESCRIPT'])
-    #         print("Traffic_light: ", i['TRAFFIC_LIGHT'])
-    #         print("carb: ", i['CARB'])
-    #         print("kcal: ", i['KCAL'])
-    #         print('-------------------')
-    # collect_choice(n)
-    return render_template("index.html")
+    if request.method == 'POST':
+        x = request.form['name']
+        def collect_choice(x):
+            data_find = kcal_collection.find({'NAME': x})
+            for i in data_find:
+                short_descript = print(i['SHORT_DESCRIPT'])
+                traffic_light = print("Traffic_light: ", i['TRAFFIC_LIGHT'])
+                carb = print("carb: ", i['CARB'])
+                kcal = print("kcal: ", i['KCAL'])
+            collect_choice(x.upper())
+            return redirect('search',short_descript = short_descript ,traffic_light = traffic_light,carb = carb ,kcal =kcal)
+        return render_template("index.html")
+
+@app.route('/search<short_descript>,<traffic_light>,<carb>,<kcal>')
+def search(short_descript,traffic_light,carb,kcal):
+    return render_template("search.html",short_descript = short_descript ,traffic_light = traffic_light,carb = carb ,kcal =kcal)
 
 @app.route('/index')
 def index_return():
@@ -99,7 +104,7 @@ def bmi():
             calo = bmr * 1.95
 
         return redirect(url_for('BMI_request', bmr=bmr, BMI=BMI, calo = calo))
-        return render_template("BMI.html")
+    return render_template("BMI.html")
 #--------------------------------------------------------------------
 
 
