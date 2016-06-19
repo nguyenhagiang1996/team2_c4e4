@@ -28,12 +28,31 @@ mongoengine.connect(db_name, host=host, port=port, username=user_name, password=
 class Shop_das(Document):
     title = StringField()
     link = StringField()
+    image = StringField()
 #-------------------------
 app = Flask(__name__,static_url_path='')
+#----------------------- search
+import pymongo
+db_uri = "mongodb://huong:123456@ds025973.mlab.com:25973/data_kcal"
+
+db = pymongo.MongoClient(db_uri).get_default_database()
+kcal_collection = db['kcal']
+
+
 
 
 @app.route('/')
 def index():
+    # n = str(input("Enter your food: ")).upper()
+    # def collect_choice(x):
+    #     data_find = kcal_collection.find({'NAME': x})
+    #     for i in data_find:
+    #         print(i['SHORT_DESCRIPT'])
+    #         print("Traffic_light: ", i['TRAFFIC_LIGHT'])
+    #         print("carb: ", i['CARB'])
+    #         print("kcal: ", i['KCAL'])
+    #         print('-------------------')
+    # collect_choice(n)
     return render_template("index.html")
 
 @app.route('/index')
@@ -53,21 +72,34 @@ def orders():
     return render_template("orders.html")
 #--------------------------------------------------BMI
 
-@app.route('/BMI_request<bmr>,<BMI>')
-def BMI_request(bmr,BMI):
-    return render_template('BMI_request.html',bmr=bmr,BMI=BMI)
+
+@app.route('/BMI_request<bmr>,<BMI>,<calo>')
+def BMI_request(bmr,BMI,calo):
+    return render_template('BMI_request.html',bmr=bmr,BMI=BMI,calo=calo)
 
 @app.route('/BMI',methods=['GET','POST'])
 def bmi():
     if request.method == 'POST':
         if request.form['gender'] == "Male":
-            bm = 66.47 + (13.75  * int(request.form['weight'])) + (5.0 * int(request.form['height'])) - (6.75 * int(request.form['age']))
+            bmr = 66.47 + (13.75  * int(request.form['weight'])) + (5.0 * int(request.form['height'])) - (6.75 * int(request.form['age']))
             BMI = int(request.form['weight']) / (int(request.form['height']) / 100) ** 2
         elif request.form['gender'] == "Female":
             bmr = 665.09 + (9.56 * int(request.form['weight'])) + (1.84 * int(request.form['height'])) - (4.67 * int(request.form['age']))
             BMI = int(request.form['weight']) / (int(request.form['height']) / 100) ** 2
-        return redirect(url_for('BMI_request',bmr=bmr,BMI=BMI))
-    return render_template("BMI.html" )
+
+        if request.form['Level of activity'] == "1":
+            calo = bmr * 1.2
+        elif request.form['Level of activity'] == "2":
+            calo = bmr * 1.35
+        elif request.form['Level of activity'] == "3":
+            calo = bmr * 1.55
+        elif request.form['Level of activity'] == "4":
+            calo = bmr * 1.75
+        elif request.form['Level of activity'] == "5":
+            calo = bmr * 1.95
+
+        return redirect(url_for('BMI_request', bmr=bmr, BMI=BMI, calo = calo))
+        return render_template("BMI.html")
 #--------------------------------------------------------------------
 
 

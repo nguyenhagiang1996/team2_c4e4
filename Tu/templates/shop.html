@@ -63,17 +63,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- about -->
 <div class="orders">
 	<div class="container">
-        {% for foo in data_shop %}
+        {% for shop in data_shop %}
 		<div class="order-top">
-			<li class="im-g"><a href="{{ foo.link }}"><img src="{{ foo.image }}" class="img-responsive" alt=""></a></li>
-			<li class="data"><a href="{{ foo.link }}" ><h4>{{ foo.title }}</h4></a>
+			<li class="im-g"><a href="{{ shop.link }}"><img src="{{ shop.image }}" class="img-responsive" alt=""></a></li>
+			<li class="data"><a href="{{ shop.link }}" ><h4>{{ shop.title }}</h4></a>
 			</li>
 			<li class="bt-nn">
-				<a class="morebtn hvr-rectangle-in" href="{{ foo.link }}">View</a>
+				<a class="morebtn hvr-rectangle-in" href="{{ shop.link }}">View</a>
 			</li>
 			<div class="clearfix"></div>
 		</div>
         {% endfor %}
+    </div>
+</div>
 <!-- about -->
 <!-- footer-->
 	<div class="footer">
